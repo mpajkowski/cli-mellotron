@@ -1,0 +1,12 @@
+zcbczbcbz{
+	"name": "cli-mellotron",
+	"authors": [
+		"mpajkowski"
+	],
+	"dependencies": {
+		"dsfml": "~>2.1.1"
+	},
+	"description": "Simple CLI piano written in Dlang",
+	"copyright": "-",
+	"license": "none"
+}
