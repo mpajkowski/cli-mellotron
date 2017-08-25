@@ -2,6 +2,7 @@ module notes;
 
 import main;
 import dsfml.audio;
+import dsfml.graphics;
 
 class Notes
 {
@@ -10,11 +11,11 @@ public:
 
     this()
     {
-    	for (int i = 0; i < NOTES_MAX; ++i) {
+    	for (size_t i = 0; i < NOTES_MAX; ++i) {
     		sounds[ i ] = new Sound();
     	}
 
-    	for (int i = 0; i < NOTES_MAX; ++i) {
+    	for (size_t i = 0; i < NOTES_MAX; ++i) {
 	        sounds[ i ].setBuffer(buffers[i]);
 	        sounds[ i ].pitch(2);
 
@@ -27,7 +28,32 @@ public:
     	}
     }
 
-    void playNote(Note note, bool isKeyPressed)
+    void pianoLogic()
+    {
+    	noteListener(Note.c, Keyboard.isKeyPressed(Keyboard.Key.Z));
+        noteListener(Note.d, Keyboard.isKeyPressed(Keyboard.Key.X));
+        noteListener(Note.e, Keyboard.isKeyPressed(Keyboard.Key.C));
+        noteListener(Note.f, Keyboard.isKeyPressed(Keyboard.Key.V));
+        noteListener(Note.g, Keyboard.isKeyPressed(Keyboard.Key.B));
+        noteListener(Note.a, Keyboard.isKeyPressed(Keyboard.Key.N));
+        noteListener(Note.b, Keyboard.isKeyPressed(Keyboard.Key.M));
+        noteListener(Note.c2, Keyboard.isKeyPressed(Keyboard.Key.Comma));
+        noteListener(Note.d2, Keyboard.isKeyPressed(Keyboard.Key.Period));
+
+        // black keys
+        noteListener(Note.cis, Keyboard.isKeyPressed(Keyboard.Key.S));
+        noteListener(Note.dis, Keyboard.isKeyPressed(Keyboard.Key.D));
+        noteListener(Note.fis, Keyboard.isKeyPressed(Keyboard.Key.G));
+        noteListener(Note.gis, Keyboard.isKeyPressed(Keyboard.Key.H));
+        noteListener(Note.ais, Keyboard.isKeyPressed(Keyboard.Key.J));
+        noteListener(Note.cis2, Keyboard.isKeyPressed(Keyboard.Key.L));
+    }
+    
+private:
+    Sound[NOTES_MAX] sounds;
+    bool[NOTES_MAX] noteHitted;
+
+    void noteListener(Note note, bool isKeyPressed)
     {
     	if (isKeyPressed) {
 	        if (!noteHitted[note]) {
@@ -39,8 +65,4 @@ public:
 	        noteHitted[note] = false;
 	    }
     }
-    
-private:
-    Sound[NOTES_MAX] sounds;
-    bool[NOTES_MAX] noteHitted;
 }

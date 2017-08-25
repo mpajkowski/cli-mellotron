@@ -30,30 +30,11 @@ void main()
     buffers[13].loadFromFile("wav/c2s.wav");
     buffers[14].loadFromFile("wav/d2.wav");
 
-
     Notes notes = new Notes();
     writef("Play it!\n");
 
     while (!Keyboard.isKeyPressed(Keyboard.Key.Q)) {
-
-        // white keys
-        notes.playNote(Notes.Note.c, Keyboard.isKeyPressed(Keyboard.Key.Z));
-        notes.playNote(Notes.Note.d, Keyboard.isKeyPressed(Keyboard.Key.X));
-        notes.playNote(Notes.Note.e, Keyboard.isKeyPressed(Keyboard.Key.C));
-        notes.playNote(Notes.Note.f, Keyboard.isKeyPressed(Keyboard.Key.V));
-        notes.playNote(Notes.Note.g, Keyboard.isKeyPressed(Keyboard.Key.B));
-        notes.playNote(Notes.Note.a, Keyboard.isKeyPressed(Keyboard.Key.N));
-        notes.playNote(Notes.Note.b, Keyboard.isKeyPressed(Keyboard.Key.M));
-        notes.playNote(Notes.Note.c2, Keyboard.isKeyPressed(Keyboard.Key.Comma));
-        notes.playNote(Notes.Note.d2, Keyboard.isKeyPressed(Keyboard.Key.Period));
-
-        // black keys
-        notes.playNote(Notes.Note.cis, Keyboard.isKeyPressed(Keyboard.Key.S));
-        notes.playNote(Notes.Note.dis, Keyboard.isKeyPressed(Keyboard.Key.D));
-        notes.playNote(Notes.Note.fis, Keyboard.isKeyPressed(Keyboard.Key.G));
-        notes.playNote(Notes.Note.gis, Keyboard.isKeyPressed(Keyboard.Key.H));
-        notes.playNote(Notes.Note.ais, Keyboard.isKeyPressed(Keyboard.Key.J));
-        notes.playNote(Notes.Note.cis2, Keyboard.isKeyPressed(Keyboard.Key.L));
-
+        notes.pianoLogic();        
     }
+    writefln("");
 }
